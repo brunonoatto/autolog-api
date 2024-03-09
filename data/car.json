@@ -1,0 +1,32 @@
+[
+  {
+    "license": "AAA4323",
+    "brand": "Ford",
+    "model": "Fiesta 1.6",
+    "year": 2015
+  },
+  {
+    "license": "AAA4324",
+    "brand": "Fiat",
+    "model": "Uno",
+    "year": 2008
+  },
+  {
+    "license": "22223333",
+    "brand": "BRM",
+    "model": "Buggy W. Turing/Luxo/M-11 Absolut 1.6 8V",
+    "year": 3333
+  },
+  {
+    "license": "AAA1111",
+    "brand": "VW - VolksWagen",
+    "model": "Polo 1.6 E-Flex 8V 5p",
+    "year": 2011
+  },
+  {
+    "license": "PPOI988",
+    "brand": "ASTON MARTIN",
+    "model": "Vantage 6.0 V12 510cv",
+    "year": 9888
+  }
+]

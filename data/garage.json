@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "name": "Garagem ABC",
+    "cnpj_cpf": "12345678901234",
+    "phone": "(51) 1234-5678",
+    "email": "garagem@abc.com",
+    "address": "Rua A, 123",
+    "number": 123,
+    "complement": "Apto 101",
+    "password": "senha123"
+  },
+  {
+    "id": "6defb96d-1948-4463-a9dc-4112ada1649e",
+    "name": "Garagem XYZ",
+    "cnpj_cpf": "98765432109876",
+    "phone": "(51) 9876-5432",
+    "email": "garagem@xyz.com",
+    "address": "Rua B, 456",
+    "number": 456,
+    "complement": null,
+    "password": "senha456"
+  }
+]

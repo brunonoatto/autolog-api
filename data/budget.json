@@ -1,0 +1,22 @@
+[
+  {
+    "observation": "",
+    "status": 1,
+    "license": "AAA1111",
+    "cpf_cnpj": "0101010101",
+    "phone": "020202002",
+    "name": "nome da pessoa",
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "dcbde54f-31ad-4f8e-b5d2-91f03af16775"
+  },
+  {
+    "observation": "",
+    "status": 1,
+    "license": "PPOI988",
+    "cpf_cnpj": "222200000",
+    "phone": "333330000",
+    "name": "nome do cliente",
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "d0f5effc-c7c8-4d0c-97db-6716be1d072d"
+  }
+]
