@@ -28,5 +28,17 @@
     "brand": "ASTON MARTIN",
     "model": "Vantage 6.0 V12 510cv",
     "year": 9888
+  },
+  {
+    "license": "333deeee",
+    "brand": "Baby",
+    "model": "Buggy 1.6/ TST/ RS 1.6 4-Lug.",
+    "year": 2522
+  },
+  {
+    "license": "22222",
+    "brand": "Agrale",
+    "model": "MARRUÁ AM 150 2.8  CS TDI Diesel",
+    "year": 2222
   }
 ]

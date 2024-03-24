@@ -1,9 +1,11 @@
 import express from 'express';
 import cors from 'cors';
+import loginRouter from './routes/login';
 import budgetRouter from './routes/budget';
 import carRouter from './routes/car';
 import dashboardRouter from './routes/dashboard';
 import garageRouter from './routes/garage';
+import authMiddleware from './core/middlewares/authMiddleware';
 
 const app: express.Application = express();
 
@@ -16,10 +18,11 @@ app.use(cors());
 app.use(express.json());
 
 // Register routes
-app.use('/api/budget', budgetRouter);
-app.use('/api/car', carRouter);
-app.use('/api/dashboard', dashboardRouter);
-app.use('/api/garage', garageRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/budget', authMiddleware, budgetRouter);
+app.use('/api/car', authMiddleware, carRouter);
+app.use('/api/dashboard', authMiddleware, dashboardRouter);
+app.use('/api/garage', authMiddleware, garageRouter);
 
 // Start the server
 app.listen(port, () => {

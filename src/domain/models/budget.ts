@@ -1,5 +1,4 @@
 export type NewBudgetParams = {
-  garageId: string;
   license: string;
   status: number;
   name: string;

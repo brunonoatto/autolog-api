@@ -1,0 +1,9 @@
+[
+  {
+    "id": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "name": "Nome do cliente",
+    "cpf": "456465465",
+    "email": "cliente@abc.com",
+    "password": "senha123"
+  }
+]
