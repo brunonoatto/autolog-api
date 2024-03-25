@@ -11,7 +11,7 @@
   },
   {
     "observation": "",
-    "status": 1,
+    "status": 2,
     "license": "PPOI988",
     "cpf_cnpj": "222200000",
     "phone": "333330000",
@@ -21,7 +21,7 @@
   },
   {
     "observation": "",
-    "status": 1,
+    "status": 3,
     "license": "333deeee",
     "cpf_cnpj": "42342342342",
     "phone": "51993151489",
@@ -31,7 +31,7 @@
   },
   {
     "observation": "",
-    "status": 1,
+    "status": 4,
     "license": "22222",
     "cpf_cnpj": "2222",
     "phone": "+5551993151489",
@@ -41,12 +41,32 @@
   },
   {
     "observation": " fsfsd fsf sdf",
-    "status": 1,
+    "status": 5,
     "license": "AAA4323",
     "cpf_cnpj": "42342342342",
     "phone": "+5551993151489",
     "name": "nome da pessoa",
     "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
     "os": "66b6883b-10cb-4569-b9dd-e07277151acd"
+  },
+  {
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "390dda8e-744f-4ecc-92d8-b5e2635ae8d3",
+    "status": 6,
+    "observation": "dadad ad ad ",
+    "license": "www8888",
+    "cpf_cnpj": "00110011",
+    "phone": "456465465",
+    "name": "Cliente lala"
+  },
+  {
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "d12099ee-5d41-42c7-bad2-44907515201e",
+    "status": 1,
+    "observation": "dsad asd as",
+    "license": "98921151",
+    "cpf_cnpj": "3423423423423",
+    "phone": "51993151489",
+    "name": "nome da pessoa"
   }
 ]

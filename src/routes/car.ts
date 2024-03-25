@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import fs from 'fs';
 
-import { Car } from '../domain/models/car';
+import { TCar } from '../domain/models/car';
 import { Repository } from '../repository';
 
 const { cars } = Repository;
@@ -14,8 +14,8 @@ const router: Router = Router();
 // });
 
 // Rota para criar uma nova Carro
-router.post<Car>('/', (req, res) => {
-  const newCar: Car = req.body;
+router.post<TCar>('/', (req, res) => {
+  const newCar: TCar = req.body;
 
   const existLicense = cars.find((g) => g.license === req.params.license);
   if (existLicense) return res.status(404).json({ message: 'Placa já existe.' });
@@ -27,7 +27,7 @@ router.post<Car>('/', (req, res) => {
 
 // Rota para buscar uma Carro por ID
 router.get('/:license', (req, res) => {
-  const car: Car | undefined = cars.find((g) => g.license === req.params.license);
+  const car: TCar | undefined = cars.find((g) => g.license === req.params.license);
 
   // if (!car) return res.status(404).json({ message: 'Carro não encontrado.' });
 
@@ -35,11 +35,11 @@ router.get('/:license', (req, res) => {
 });
 
 // Rota para atualizar uma Carro por ID
-router.put<Car>('/:license', (req, res) => {
-  const car: Car | undefined = cars.find((g) => g.license === req.params.license);
+router.put<TCar>('/:license', (req, res) => {
+  const car: TCar | undefined = cars.find((g) => g.license === req.params.license);
   if (!car) return res.status(404).json({ message: 'Carro não encontrado.' });
 
-  const updatedCar: Car = req.body;
+  const updatedCar: TCar = req.body;
   updatedCar.license = car.license;
 
   const carIndex: number = cars.findIndex((g) => g.license === car.license);

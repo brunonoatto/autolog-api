@@ -1,4 +1,4 @@
-export type Garage = {
+export type TGarage = {
   id: string;
   name: string;
   cnpj_cpf: string;
@@ -8,4 +8,4 @@ export type Garage = {
   number: number;
   complement?: string;
   password: string;
-}
+};

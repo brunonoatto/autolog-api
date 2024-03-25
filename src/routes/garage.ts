@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 import { Router } from 'express';
 import fs from 'fs';
 
-import { Garage } from '../domain/models/garage';
+import { TGarage } from '../domain/models/garage';
 import { Repository } from '../repository';
 import getAccessTokenData from '../helpers/getAccessTokenData';
 
@@ -17,7 +17,7 @@ const router: Router = Router();
 
 // Rota para criar uma nova Garagem
 router.post('/', (req, res) => {
-  const newGarage: Garage = req.body;
+  const newGarage: TGarage = req.body;
   newGarage.id = randomUUID();
   garages.push(newGarage);
   fs.writeFileSync('data/garage.json', JSON.stringify(garages, null, 2));
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
 // Rota para buscar uma Garagem por ID
 router.get('/:id', (req, res) => {
-  const garage: Garage | undefined = garages.find((g) => g.id === req.params.id);
+  const garage: TGarage | undefined = garages.find((g) => g.id === req.params.id);
   if (!garage) return res.status(404).json({ message: 'Garagem não encontrada.' });
   res.json(garage);
 });
@@ -38,10 +38,10 @@ router.put('', (req, res) => {
     return res.status(404).json({ message: 'Token não encontrado na Request.' });
   const garageId = accessTokenData.id;
 
-  const garage: Garage | undefined = garages.find((g) => g.id === garageId);
+  const garage: TGarage | undefined = garages.find((g) => g.id === garageId);
   if (!garage) return res.status(404).json({ message: 'Garagem não encontrada.' });
 
-  const updatedGarage: Garage = req.body;
+  const updatedGarage: TGarage = req.body;
   updatedGarage.id = garage.id;
 
   const garageIndex: number = garages.findIndex((g) => g.id === garage.id);
