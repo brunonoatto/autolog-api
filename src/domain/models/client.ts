@@ -4,6 +4,12 @@ export type TClient = {
   cpf: string;
   email: string;
   password: string;
+  licenses: string[];
 };
 
 export type TNewClient = Omit<TClient, 'id'>;
+
+export type TGetClientParams = {
+  cpf: string;
+  email: string;
+};
