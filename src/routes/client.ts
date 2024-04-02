@@ -11,7 +11,7 @@ const router: Router = Router();
 
 // Rota para criar um novo Orçamento
 router.post<TNewClient>('/', (req, res) => {
-  const { name, cpf, email, password }: TNewClient = req.body;
+  const { name, cpf, phone, email, password }: TNewClient = req.body;
 
   const existEmail = clients.findIndex((b) => b.email === email);
 
@@ -19,7 +19,7 @@ router.post<TNewClient>('/', (req, res) => {
     return res.status(400).json({ message: 'Já existe um cliente cadastrado com esse e-mail.' });
   }
 
-  const newClient: TClient = { id: randomUUID(), name, cpf, email, password, licenses: [] };
+  const newClient: TClient = { id: randomUUID(), name, cpf, phone, email, password };
   clients.push(newClient);
   fs.writeFileSync('data/client.json', JSON.stringify(clients, null, 2));
 

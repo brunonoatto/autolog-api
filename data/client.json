@@ -5,7 +5,14 @@
     "cpf": "01095438077",
     "phone": "51993151489",
     "email": "cliente@abc.com",
-    "password": "senha123",
-    "licenses": ["AAA1111", "43433434"]
+    "password": "senha123"
+  },
+  {
+    "id": "854015cf-22fa-464e-a814-5a8b1cb86baf",
+    "name": "Cliente 1",
+    "cpf": "853.546.560-01",
+    "phone": "51999999999",
+    "email": "",
+    "password": ""
   }
 ]

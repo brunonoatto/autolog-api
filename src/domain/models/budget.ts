@@ -1,4 +1,5 @@
 import { TCar } from './car';
+import { TClientResponse } from './client';
 
 export enum BudgetStatusEnum {
   'WaitingBudget' = 1,
@@ -28,9 +29,7 @@ export type TBudget = {
   garageId: string;
   license: string;
   status: BudgetStatusEnum;
-  name: string;
-  phone: string;
-  cpf_cnpj: string;
+  clientId: string;
   observation?: string;
 };
 
@@ -39,10 +38,8 @@ export type TBudgetResponse = {
   garageId: string;
   license: string;
   status: BudgetStatusEnum;
-  name: string;
-  phone: string;
-  cpf_cnpj: string;
   observation?: string;
+  client: TClientResponse;
   car: TCar;
 };
 

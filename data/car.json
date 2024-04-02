@@ -1,20 +1,16 @@
 [
   {
-    "license": "AAA1111",
-    "brand": "VW - VolksWagen",
-    "model": "Polo 1.6 E-Flex 8V 5p",
-    "year": 2011
-  },
-  {
-    "license": "43433434",
+    "clientId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "license": "sssaaa",
     "brand": "Agrale",
-    "model": "MARRUÁ AM 100 2.8 CD TDI Diesel",
-    "year": 33333
+    "model": "MARRUÁ 2.8 12V 132cv TDI Diesel",
+    "year": 1200
   },
   {
-    "license": "222333",
-    "brand": "ASTON MARTIN",
-    "model": "DBX 4.0 V8 550cv",
-    "year": 333
+    "clientId": "854015cf-22fa-464e-a814-5a8b1cb86baf",
+    "license": "AAA1122",
+    "brand": "BMW",
+    "model": "125i M Sport/Active Flex 2.0 TB Aut. 5p",
+    "year": 2222
   }
 ]

@@ -1,51 +1,30 @@
 [
   {
-    "id": "5005b488-8a7a-41ef-a349-c81a65be8136",
-    "os": "f30934e5-fdee-469f-88a1-976fef02f87e",
-    "price": 200,
-    "qtd": 1,
-    "description": "MÃO DE OBRA"
-  },
-  {
-    "id": "7d05582f-7674-4483-9c4e-03ecbde9b7bf",
-    "os": "f30934e5-fdee-469f-88a1-976fef02f87e",
-    "price": 25,
-    "qtd": 4,
-    "description": "PASTILHA FREIOS"
-  },
-  {
-    "id": "0e0863c8-8c76-4527-a157-201e4a901341",
-    "os": "f30934e5-fdee-469f-88a1-976fef02f87e",
-    "price": 30,
-    "qtd": 2,
-    "description": "ROLAMENTOS TRASEIROS"
-  },
-  {
-    "id": "291e096b-00c9-413a-b5d3-ffef7c4e6304",
-    "os": "f30934e5-fdee-469f-88a1-976fef02f87e",
-    "price": 32,
-    "qtd": 3,
-    "description": "OLEO MOTOR"
-  },
-  {
-    "id": "1ff3f948-70cf-4080-863f-fca1bc9a2877",
-    "os": "b6c73a9c-6664-4801-8f7a-95a067d0f221",
+    "id": "6f98a15f-f570-45a6-a384-02327d3fe2d5",
+    "os": "9d999cf8-222f-47e5-9278-1d86700585d5",
     "price": 2,
     "qtd": 1,
     "description": "item 1"
   },
   {
-    "id": "2fc0c25b-bfe0-4978-9e92-dedf61e5fb85",
-    "os": "b6c73a9c-6664-4801-8f7a-95a067d0f221",
-    "price": 33,
-    "qtd": 3,
+    "id": "3ae1b8d6-1949-4a12-a938-ad847308aada",
+    "os": "9d999cf8-222f-47e5-9278-1d86700585d5",
+    "price": 44,
+    "qtd": 2,
     "description": "item 2"
   },
   {
-    "id": "bc00a1c3-351b-484d-a30c-d43382722b54",
-    "os": "5db24759-fa29-4faf-91da-cd7c03884012",
-    "price": 3,
+    "id": "965bbe39-7079-406a-b2a8-d1f72a1f5b13",
+    "os": "cf3a1b0d-b3e9-416f-b14b-cd1ab544bacf",
+    "price": 33,
+    "qtd": 2,
+    "description": "item 11"
+  },
+  {
+    "id": "c9cac3c5-752b-4595-a92c-cb8b29657c71",
+    "os": "cf3a1b0d-b3e9-416f-b14b-cd1ab544bacf",
+    "price": 4,
     "qtd": 1,
-    "description": "333"
+    "description": "item 22"
   }
 ]
