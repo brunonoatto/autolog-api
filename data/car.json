@@ -1,56 +1,20 @@
 [
   {
-    "license": "AAA4323",
-    "brand": "Ford",
-    "model": "Fiesta 1.6",
-    "year": 2015
-  },
-  {
-    "license": "AAA4324",
-    "brand": "Fiat",
-    "model": "Uno",
-    "year": 2008
-  },
-  {
-    "license": "22223333",
-    "brand": "BRM",
-    "model": "Buggy W. Turing/Luxo/M-11 Absolut 1.6 8V",
-    "year": 3333
-  },
-  {
     "license": "AAA1111",
     "brand": "VW - VolksWagen",
     "model": "Polo 1.6 E-Flex 8V 5p",
     "year": 2011
   },
   {
-    "license": "PPOI988",
-    "brand": "ASTON MARTIN",
-    "model": "Vantage 6.0 V12 510cv",
-    "year": 9888
-  },
-  {
-    "license": "333deeee",
-    "brand": "Baby",
-    "model": "Buggy 1.6/ TST/ RS 1.6 4-Lug.",
-    "year": 2522
-  },
-  {
-    "license": "22222",
+    "license": "43433434",
     "brand": "Agrale",
-    "model": "MARRUÁ AM 150 2.8  CS TDI Diesel",
-    "year": 2222
+    "model": "MARRUÁ AM 100 2.8 CD TDI Diesel",
+    "year": 33333
   },
   {
-    "license": "www8888",
-    "brand": "Alfa Romeo",
-    "model": "147 2.0 16V 148cv 4p Semi-Aut.",
-    "year": 2222
-  },
-  {
-    "license": "98921151",
-    "brand": "Acura",
-    "model": "NSX 3.0",
-    "year": 2222
+    "license": "222333",
+    "brand": "ASTON MARTIN",
+    "model": "DBX 4.0 V8 550cv",
+    "year": 333
   }
 ]

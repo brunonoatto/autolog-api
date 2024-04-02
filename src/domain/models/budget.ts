@@ -34,6 +34,18 @@ export type TBudget = {
   observation?: string;
 };
 
+export type TBudgetResponse = {
+  os: string;
+  garageId: string;
+  license: string;
+  status: BudgetStatusEnum;
+  name: string;
+  phone: string;
+  cpf_cnpj: string;
+  observation?: string;
+  car: TCar;
+};
+
 export type TBudgetItem = {
   id: string;
   os: string;

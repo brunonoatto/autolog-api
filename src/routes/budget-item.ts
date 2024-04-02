@@ -14,10 +14,10 @@ router.post<{ os: string }, any, Omit<TBudgetItem, 'os' | 'id'>>('/:os', (req, r
   const osParam = req.params.os;
 
   const hasItemDescription = budgetItems.find(
-    (i) => i.os && osParam && i.description === req.body.description,
+    (i) => i.os === osParam && i.description === req.body.description,
   );
   if (hasItemDescription)
-    return res.status(404).json({ message: 'Já existe um item com esta descrição no orçamento.' });
+    return res.status(400).json({ message: 'Já existe um item com esta descrição no orçamento.' });
 
   const newBudgetItem: TBudgetItem = {
     id: randomUUID(),
@@ -34,7 +34,7 @@ router.post<{ os: string }, any, Omit<TBudgetItem, 'os' | 'id'>>('/:os', (req, r
 router.delete('/:id', (req, res) => {
   const itemIndex: number = budgetItems.findIndex((b) => b.id === req.params.id);
   if (itemIndex === -1)
-    return res.status(404).json({ message: 'Item do orçamento não encontrado.' });
+    return res.status(400).json({ message: 'Item do orçamento não encontrado.' });
 
   budgetItems.splice(itemIndex, 1);
   fs.writeFileSync('data/budgetItems.json', JSON.stringify(budgetItems, null, 2));
