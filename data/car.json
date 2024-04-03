@@ -12,5 +12,12 @@
     "brand": "BMW",
     "model": "125i M Sport/Active Flex 2.0 TB Aut. 5p",
     "year": 2222
+  },
+  {
+    "clientId": "59b49302-7dfe-4f1b-89b9-5e331c371bdd",
+    "license": "RRR1112",
+    "brand": "Asia Motors",
+    "model": "Towner Coach Full",
+    "year": 2250
   }
 ]

@@ -26,5 +26,12 @@
     "price": 4,
     "qtd": 1,
     "description": "item 22"
+  },
+  {
+    "id": "1aa56560-7a05-40b7-8264-16563e1411d4",
+    "os": "344950f1-c56f-4a85-bd68-2be683eb6ae1",
+    "price": 23,
+    "qtd": 1,
+    "description": "item 1"
   }
 ]

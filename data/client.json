@@ -14,5 +14,13 @@
     "phone": "51999999999",
     "email": "",
     "password": ""
+  },
+  {
+    "id": "59b49302-7dfe-4f1b-89b9-5e331c371bdd",
+    "name": "Cliente sem cadastro",
+    "cpf": "689.617.100-60",
+    "phone": "51989899898",
+    "email": "",
+    "password": ""
   }
 ]

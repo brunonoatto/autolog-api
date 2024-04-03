@@ -2,7 +2,7 @@
   {
     "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
     "os": "9d999cf8-222f-47e5-9278-1d86700585d5",
-    "status": 2,
+    "status": 5,
     "clientId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
     "license": "sssaaa"
   },
@@ -12,5 +12,12 @@
     "status": 2,
     "clientId": "854015cf-22fa-464e-a814-5a8b1cb86baf",
     "license": "AAA1122"
+  },
+  {
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "344950f1-c56f-4a85-bd68-2be683eb6ae1",
+    "status": 2,
+    "clientId": "59b49302-7dfe-4f1b-89b9-5e331c371bdd",
+    "license": "RRR1112"
   }
 ]

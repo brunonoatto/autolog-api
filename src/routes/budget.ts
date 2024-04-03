@@ -148,10 +148,11 @@ router.get('/:os', (req, res) => {
 // Rota para buscar um Orçamento pela Placa
 router.get<{ license: string }>('/', (req, res) => {
   const accessTokenData = getAccessTokenData(req);
-  if (!accessTokenData)
-    return res.status(401).json({ message: 'Token não encontrado na Request.' });
-  const garageId = accessTokenData.type === 'garage' ? accessTokenData.id : null;
-  const clientId = accessTokenData.type === 'client' ? accessTokenData.id : null;
+  // TODO: essa rota pode ser acessada sem login, melhorar isso
+  // if (!accessTokenData)
+  //   return res.status(401).json({ message: 'Token não encontrado na Request.' });
+  const garageId = accessTokenData?.type === 'garage' ? accessTokenData?.id : null;
+  const clientId = accessTokenData?.type === 'client' ? accessTokenData?.id : null;
 
   const licensesFilter: string[] = [];
   if (clientId) {
