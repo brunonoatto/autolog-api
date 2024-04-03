@@ -182,16 +182,17 @@ router.get<{}, {}, {}, { license: string }>('/', (req, res) => {
       throw Error('Automóvel de um orçamento não encontrado!');
     }
 
-    const { id, password, ...clientData } = clients.find((c) => c.id === budget.clientId) || {};
+    const { os, garageId, status, license } = budget;
+    const { brand, model, year } = car;
+    const { name: clientName = '' } = clients.find((c) => c.id === budget.clientId) || {};
 
     return {
-      os: budget.os,
-      garageId: budget.garageId,
-      status: budget.status,
-      observation: budget.observation,
-      license: budget.license,
-      client: clientData,
-      car,
+      os,
+      garageId,
+      status,
+      license,
+      clientName,
+      car: { brand, model, year },
     } as TBudgetResponse;
   });
 

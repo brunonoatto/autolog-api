@@ -38,11 +38,10 @@ export type TUpdatedBudget = Omit<TBudget, 'garageId'>;
 export type TBudgetResponse = {
   os: string;
   garageId: string;
-  license: string;
   status: BudgetStatusEnum;
-  observation?: string;
-  client: TClientResponse;
-  car: TCar;
+  license: string;
+  clientName: string;
+  car: Pick<TCar, 'brand' | 'model' | 'year'>;
 };
 
 export type TBudgetItem = {

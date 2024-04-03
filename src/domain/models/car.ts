@@ -1,6 +1,6 @@
 export type TCar = {
-  license: string;
   clientId: string;
+  license: string;
   brand: string;
   model: string;
   year: number;

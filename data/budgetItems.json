@@ -33,5 +33,12 @@
     "price": 23,
     "qtd": 1,
     "description": "item 1"
+  },
+  {
+    "id": "885c5665-b46b-4cf4-8c85-3d3ca5357e8c",
+    "os": "a3167c12-9dbe-44c4-9a7d-d77ac491d782",
+    "description": "MÃO DE OBRA",
+    "qtd": 1,
+    "price": 2
   }
 ]

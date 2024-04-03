@@ -19,5 +19,12 @@
     "status": 2,
     "clientId": "59b49302-7dfe-4f1b-89b9-5e331c371bdd",
     "license": "RRR1112"
+  },
+  {
+    "garageId": "9f9716f4-e3a7-42cb-99c2-c2c0caba087c",
+    "os": "a3167c12-9dbe-44c4-9a7d-d77ac491d782",
+    "status": 1,
+    "clientId": "d512127e-5d1e-497f-a658-6baf0724da3c",
+    "license": "SSSSSSSSS"
   }
 ]

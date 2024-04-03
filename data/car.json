@@ -19,5 +19,12 @@
     "brand": "Asia Motors",
     "model": "Towner Coach Full",
     "year": 2250
+  },
+  {
+    "clientId": "d512127e-5d1e-497f-a658-6baf0724da3c",
+    "license": "SSSSSSSSS",
+    "brand": "Audi",
+    "model": "A1 Sportback 1.4 TFSI 185cv 5p S-tronic",
+    "year": 3333
   }
 ]
