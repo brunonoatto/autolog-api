@@ -20,6 +20,7 @@ export type TBudget = {
   status: BudgetStatusEnum;
   clientId: string;
   observation?: string;
+  createdDate: string;
 };
 
 export type TNewBudgetParams = {

@@ -79,6 +79,7 @@ router.post<any, any, any, TNewBudgetParams>('/', (req, res) => {
     status: BudgetStatusEnum.WaitingBudget,
     clientId: client.id,
     license: budgetParam.license,
+    createdDate: new Date().toISOString(),
   };
 
   budgets.push(newBudget);
