@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Router } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { TAccessToken, TLoginParams, TLoginResponse, TUserType } from '../domain/models/login';
@@ -8,40 +8,37 @@ const { garages, clients } = Repository;
 
 const router: Router = Router();
 
-// Rota para login da Garagem
-router.post<TLoginParams>('', (req, res) => {
+// Rota para login da Garagem e Usuário
+router.post<{}, {}, TLoginParams>('', (req, res) => {
   let id: string = '';
   let name: string = '';
   let type: TUserType = 'garage';
 
-  const loginParams: TLoginParams = req.body as TLoginParams;
+  const { body } = req;
 
-  const garage = garages.find(
-    (g) => g.email === loginParams.email && g.password === loginParams.password,
-  );
-
-  const client = clients.find(
-    (c) => c.email === loginParams.email && c.password === loginParams.password,
-  );
-
-  if (!garage && !client) return res.status(404).json({ message: 'Email ou senha inválidos.' });
-
+  const garage = garages.find((g) => g.email === body.email && g.password === body.password);
   if (garage) {
     id = garage.id;
     name = garage.name;
     type = 'garage';
-  } else if (client) {
-    id = client.id;
-    name = client.name;
-    type = 'client';
+  } else {
+    const client = clients.find((c) => c.email === body.email && c.password === body.password);
+
+    if (client) {
+      id = client.id;
+      name = client.name;
+      type = 'client';
+    } else {
+      return res.status(404).json({ message: 'Email ou senha inválidos.' });
+    }
   }
 
-  if (!id) return res.status(404).json({ message: 'Erro ao carregar usuário.' });
+  const accessToken: TAccessToken = { id, name, type };
 
   const response: TLoginResponse = {
     name,
     type,
-    accessToken: jwt.sign({ id, name, type } as TAccessToken, 'secret-key'),
+    accessToken: jwt.sign(accessToken, 'secret-key'),
   };
 
   res.status(201).json(response);

@@ -9,8 +9,7 @@ const { budgets, cars } = Repository;
 
 const router: Router = Router();
 
-// Rota para listar os Orçamentos de uma Garagem
-// TODO: add o nome da pessoa e telefone
+// Rota para listar os Orçamentos de uma Garagem logada
 router.get('', (req, res) => {
   const accessTokenData = getAccessTokenData(req);
   if (!accessTokenData)
@@ -21,11 +20,16 @@ router.get('', (req, res) => {
     if (b.garageId !== garageId) return acc;
 
     const car = cars.find((c) => c.license === b.license);
+
     if (car) {
+      const { license, brand, model, year } = car;
       acc.push({
         os: b.os,
         status: b.status,
-        ...car,
+        license,
+        brand,
+        model,
+        year,
       });
     }
 

@@ -8,20 +8,17 @@ const { cars } = Repository;
 
 const router: Router = Router();
 
-// Rota para listar todos os carros
-// router.get('/', (req, res) => {
-//   res.json(cars);
-// });
+// Rota para criar um novo Carro
+router.post<{}, {}, TCar>('/', (req, res) => {
+  const newCar = { ...req.body };
 
-// Rota para criar uma nova Carro
-router.post<TCar>('/', (req, res) => {
-  const newCar: TCar = req.body;
-
-  const existLicense = cars.find((g) => g.license === req.params.license);
-  if (existLicense) return res.status(400).json({ message: 'Placa já existe.' });
+  const existLicense = cars.find((g) => g.license === newCar.license);
+  if (existLicense)
+    return res.status(400).json({ message: 'A Placa informada já existe no cadastro.' });
 
   cars.push(newCar);
   fs.writeFileSync('data/car.json', JSON.stringify(cars, null, 2));
+
   res.status(201).json(newCar);
 });
 
@@ -29,30 +26,27 @@ router.post<TCar>('/', (req, res) => {
 router.get('/:license', (req, res) => {
   const car: TCar | undefined = cars.find((g) => g.license === req.params.license);
 
-  // if (!car) return res.status(404).json({ message: 'Carro não encontrado.' });
+  if (!car) return res.status(400).json({ message: 'Veículo não encontrado.' });
 
   res.json(car);
 });
 
 // Rota para atualizar uma Carro por ID
-router.put<TCar>('/:license', (req, res) => {
+router.put<{ license: string }, {}, TCar>('/:license', (req, res) => {
   const car: TCar | undefined = cars.find((g) => g.license === req.params.license);
-  if (!car) return res.status(400).json({ message: 'Carro não encontrado.' });
-
-  const updatedCar: TCar = req.body;
-  updatedCar.license = car.license;
+  if (!car) return res.status(400).json({ message: 'Veículo não encontrado.' });
 
   const carIndex: number = cars.findIndex((g) => g.license === car.license);
-  cars[carIndex] = updatedCar;
+  cars[carIndex] = req.body;
 
   fs.writeFileSync('data/car.json', JSON.stringify(cars, null, 2));
-  res.json(updatedCar);
+  res.json(req.body);
 });
 
 // Rota para remover uma Carro por ID
 router.delete('/:license', (req, res) => {
   const carIndex: number = cars.findIndex((g) => g.license === req.params.license);
-  if (carIndex === -1) return res.status(400).json({ message: 'Carro não encontrado.' });
+  if (carIndex < 0) return res.status(400).json({ message: 'Veículo não encontrado.' });
 
   cars.splice(carIndex, 1);
   fs.writeFileSync('data/car.json', JSON.stringify(cars, null, 2));

@@ -13,6 +13,15 @@ export enum BudgetStatusEnum {
 
 export type TBudgetStatus = keyof typeof BudgetStatusEnum;
 
+export type TBudget = {
+  os: string;
+  garageId: string;
+  license: string;
+  status: BudgetStatusEnum;
+  clientId: string;
+  observation?: string;
+};
+
 export type TNewBudgetParams = {
   license: string;
   name: string;
@@ -24,14 +33,7 @@ export type TNewBudgetParams = {
   year?: number;
 };
 
-export type TBudget = {
-  os: string;
-  garageId: string;
-  license: string;
-  status: BudgetStatusEnum;
-  clientId: string;
-  observation?: string;
-};
+export type TUpdatedBudget = Omit<TBudget, 'garageId'>;
 
 export type TBudgetResponse = {
   os: string;
@@ -50,5 +52,7 @@ export type TBudgetItem = {
   qtd: number;
   price: number;
 };
+
+export type TNewBudgetItem = Omit<TBudgetItem, 'os' | 'id'>;
 
 export type TBudgetComplete = TBudget & { items: TBudgetItem[]; car: TCar };

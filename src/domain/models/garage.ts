@@ -9,3 +9,5 @@ export type TGarage = {
   complement?: string;
   password: string;
 };
+
+export type TNewGarage = Omit<TGarage, 'id'>;

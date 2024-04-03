@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 import { Router } from 'express';
 import fs from 'fs';
 
-import { TBudgetItem } from '../domain/models/budget';
+import { TBudgetItem, TNewBudgetItem } from '../domain/models/budget';
 import { Repository } from '../repository';
 
 const { budgetItems } = Repository;
@@ -10,20 +10,22 @@ const { budgetItems } = Repository;
 const router: Router = Router();
 
 // Rota para adicionar um item no Orçamento
-router.post<{ os: string }, any, Omit<TBudgetItem, 'os' | 'id'>>('/:os', (req, res) => {
-  const osParam = req.params.os;
-
+router.post<{ os: string }, any, TNewBudgetItem>('/:os', (req, res) => {
+  const { description, qtd, price } = req.body;
   const hasItemDescription = budgetItems.find(
-    (i) => i.os === osParam && i.description === req.body.description,
+    (i) => i.os === req.params.os && i.description === description,
   );
   if (hasItemDescription)
     return res.status(400).json({ message: 'Já existe um item com esta descrição no orçamento.' });
 
   const newBudgetItem: TBudgetItem = {
     id: randomUUID(),
-    os: osParam,
-    ...req.body,
+    os: req.params.os,
+    description,
+    qtd,
+    price,
   };
+
   budgetItems.push(newBudgetItem);
   fs.writeFileSync('data/budgetItems.json', JSON.stringify(budgetItems, null, 2));
 
@@ -38,6 +40,7 @@ router.delete('/:id', (req, res) => {
 
   budgetItems.splice(itemIndex, 1);
   fs.writeFileSync('data/budgetItems.json', JSON.stringify(budgetItems, null, 2));
+
   res.json({ message: 'Item do orçamento removido com sucesso.' });
 });
 

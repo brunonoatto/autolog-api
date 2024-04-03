@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 import { Router } from 'express';
 import fs from 'fs';
 
-import { TGarage } from '../domain/models/garage';
+import { TGarage, TNewGarage } from '../domain/models/garage';
 import { Repository } from '../repository';
 import getAccessTokenData from '../helpers/getAccessTokenData';
 
@@ -10,15 +10,13 @@ const { garages } = Repository;
 
 const router: Router = Router();
 
-// Rota para listar todas as garages
-// router.get('/', (req, res) => {
-//   res.json(garages);
-// });
-
 // Rota para criar uma nova Garagem
-router.post('/', (req, res) => {
-  const newGarage: TGarage = req.body;
-  newGarage.id = randomUUID();
+router.post<{}, {}, TNewGarage>('/', (req, res) => {
+  const newGarage: TGarage = {
+    ...req.body,
+    id: randomUUID(),
+  };
+
   garages.push(newGarage);
   fs.writeFileSync('data/garage.json', JSON.stringify(garages, null, 2));
   res.status(201).json(newGarage);
@@ -32,7 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Rota para atualizar uma Garagem por ID
-router.put('', (req, res) => {
+router.put<{}, {}, TGarage>('', (req, res) => {
   const accessTokenData = getAccessTokenData(req);
   if (!accessTokenData)
     return res.status(404).json({ message: 'Token não encontrado na Request.' });
@@ -41,7 +39,7 @@ router.put('', (req, res) => {
   const garage: TGarage | undefined = garages.find((g) => g.id === garageId);
   if (!garage) return res.status(404).json({ message: 'Garagem não encontrada.' });
 
-  const updatedGarage: TGarage = req.body;
+  const updatedGarage = { ...req.body };
   updatedGarage.id = garage.id;
 
   const garageIndex: number = garages.findIndex((g) => g.id === garage.id);
@@ -49,21 +47,8 @@ router.put('', (req, res) => {
 
   fs.writeFileSync('data/garage.json', JSON.stringify(garages, null, 2));
   res.json(updatedGarage);
-});
 
-// Rota para remover uma Garagem por ID
-router.delete('', (req, res) => {
-  const accessTokenData = getAccessTokenData(req);
-  if (!accessTokenData)
-    return res.status(404).json({ message: 'Token não encontrado na Request.' });
-  const garageId = accessTokenData.id;
-
-  const garageIndex: number = garages.findIndex((g) => g.id === garageId);
-  if (garageIndex === -1) return res.status(404).json({ message: 'Garagem não encontrada.' });
-
-  garages.splice(garageIndex, 1);
-  fs.writeFileSync('data/garage.json', JSON.stringify(garages, null, 2));
-  res.json({ message: 'Garagem removida com sucesso.' });
+  res.status(200);
 });
 
 export default router;

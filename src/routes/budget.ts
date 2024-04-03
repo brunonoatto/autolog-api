@@ -35,10 +35,12 @@ router.post<any, any, any, TNewBudgetParams>('/', (req, res) => {
   );
 
   if (existInProgress >= 0) {
-    return res.status(400).json({ message: 'Já existe um orçamento para esse carro na sua loja.' });
+    return res
+      .status(400)
+      .json({ message: 'Já existe um orçamento em andamento para esse carro na sua loja.' });
   }
 
-  // Cria Cliente caso não exista
+  // Cria Cliente sem login caso o cpf não esteja cadastrado
   let client = clients.find((c) => c.cpf === budgetParam.cpf_cnpj);
   if (!client) {
     client = {
@@ -55,7 +57,7 @@ router.post<any, any, any, TNewBudgetParams>('/', (req, res) => {
   }
 
   // Cria o carro caso não exista
-  const carIndex = cars.findIndex((c) => c.clientId === client?.id);
+  const carIndex = cars.findIndex((c) => c.license === budgetParam.license);
   if (carIndex < 0) {
     if (!brand || !model || !year || !budgetParam.license) {
       return res.status(400).json({ message: 'Dados do automóvel incompletos.' });
@@ -78,6 +80,7 @@ router.post<any, any, any, TNewBudgetParams>('/', (req, res) => {
     clientId: client.id,
     license: budgetParam.license,
   };
+
   budgets.push(newBudget);
   fs.writeFileSync('data/budget.json', JSON.stringify(budgets, null, 2));
 
@@ -128,13 +131,12 @@ router.patch('/finish/:os', (req, res) => {
 // Rota para buscar um Orçamento pela OS
 router.get('/:os', (req, res) => {
   const osParam = req.params.os;
-  const budget: TBudget | undefined = budgets.find((b) => b.os === osParam);
 
+  const budget: TBudget | undefined = budgets.find((b) => b.os === osParam);
   if (!budget) return res.status(400).json({ message: 'Orçamento não encontrado.' });
 
   const car = cars.find((c) => c.license === budget.license);
-
-  if (!car) return res.status(400).json({ message: 'Carro do orçamento não encontrado.' });
+  if (!car) return res.status(400).json({ message: 'Automóvel do orçamento não encontrado.' });
 
   const budgetResponse: TBudgetComplete = {
     ...budget,
@@ -145,8 +147,8 @@ router.get('/:os', (req, res) => {
   res.json(budgetResponse);
 });
 
-// Rota para buscar um Orçamento pela Placa
-router.get<{ license: string }>('/', (req, res) => {
+// Rota para buscar um Orçamento pela Placa, sempre filtrando pelo accessToken do usuário caso esteja logado
+router.get<{}, {}, {}, { license: string }>('/', (req, res) => {
   const accessTokenData = getAccessTokenData(req);
   // TODO: essa rota pode ser acessada sem login, melhorar isso
   // if (!accessTokenData)
@@ -173,11 +175,11 @@ router.get<{ license: string }>('/', (req, res) => {
   const licensesToFilter = [...new Set(budgetsList.map((b) => b.license))];
   const carsList = cars.filter((c) => licensesToFilter.includes(c.license));
 
-  const response = budgetsList.map((budget) => {
+  const responseData = budgetsList.map((budget) => {
     const car: TCar | undefined = carsList.find((c) => c.license === budget.license);
 
     if (!car) {
-      throw Error('Carro de um orçamento não encontrado!');
+      throw Error('Automóvel de um orçamento não encontrado!');
     }
 
     const { id, password, ...clientData } = clients.find((c) => c.id === budget.clientId) || {};
@@ -193,11 +195,11 @@ router.get<{ license: string }>('/', (req, res) => {
     } as TBudgetResponse;
   });
 
-  res.json(response);
+  res.json(responseData);
 });
 
 // Rota para atualizar um Orçamento pela OS
-router.put<string, any, any, Omit<TBudget, 'garageId'>>('/:os', (req, res) => {
+router.put<{ os: string }, {}, Omit<TBudget, 'garageId'>>('/:os', (req, res) => {
   const accessTokenData = getAccessTokenData(req);
   if (!accessTokenData)
     return res.status(404).json({ message: 'Token não encontrado na Request.' });
@@ -247,15 +249,5 @@ router.get('/whats/:os', (req, res) => {
 
   res.json({ link: whatsAppLink });
 });
-
-// Rota para remover um Orçamento pela OS
-// router.delete('/:os', (req, res) => {
-//   const budgetIndex: number = budgets.findIndex(b => b.os === req.params.os);
-//   if (budgetIndex === -1) return res.status(404).json({ message: 'Orçamento não encontrado.' });
-
-//   budgets.splice(budgetIndex, 1);
-//   fs.writeFileSync('data/budget.json', JSON.stringify(budgets, null, 2));
-//   res.json({ message: 'Orçamento removido com sucesso.' });
-// });
 
 export default router;
