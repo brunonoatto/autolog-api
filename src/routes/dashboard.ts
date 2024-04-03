@@ -5,7 +5,7 @@ import type { TDashboardItem } from '../domain/models/dashboard';
 import { Repository } from '../repository';
 import getAccessTokenData from '../helpers/getAccessTokenData';
 
-const { budgets, cars } = Repository;
+const { budgets, cars, clients } = Repository;
 
 const router: Router = Router();
 
@@ -20,18 +20,22 @@ router.get('', (req, res) => {
     if (b.garageId !== garageId) return acc;
 
     const car = cars.find((c) => c.license === b.license);
+    const client = clients.find((c) => c.id === b.clientId);
 
-    if (car) {
-      const { license, brand, model, year } = car;
-      acc.push({
-        os: b.os,
-        status: b.status,
-        license,
-        brand,
-        model,
-        year,
-      });
-    }
+    if (!car || !client) return acc;
+
+    const { license, brand, model, year } = car;
+    const { name: clientName } = client;
+
+    acc.push({
+      os: b.os,
+      status: b.status,
+      clientName,
+      license,
+      brand,
+      model,
+      year,
+    });
 
     return acc;
   }, [] as TDashboardItem[]);
