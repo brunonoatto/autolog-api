@@ -88,47 +88,6 @@ router.post<any, any, any, TNewBudgetParams>('/', (req, res) => {
   res.status(201).json(newBudget);
 });
 
-const updateStatus = (res: any, os: string, status: BudgetStatusEnum) => {
-  const budgetIndex = budgets.findIndex((b) => b.os === os);
-
-  if (budgetIndex < 0) return res.status(400).json({ message: 'Orçamento não encontrado.' });
-
-  budgets[budgetIndex].status = status;
-
-  fs.writeFileSync('data/budget.json', JSON.stringify(budgets, null, 2));
-  res.status(201).json(true);
-};
-
-// Rota para enviar o Orçamento para o status ApprovedBudget
-router.patch('/approve/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.ApprovedBudget);
-});
-
-// Rota para enviar o Orçamento para o status WaitingBudgetApproval
-router.patch('/send-for-approve/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.WaitingBudgetApproval);
-});
-
-// Rota para enviar o Orçamento para o status RunningService
-router.patch('/start/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.RunningService);
-});
-
-// Rota para enviar o Orçamento devolta para o status WaitingBudget
-router.patch('/remake/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.WaitingBudget);
-});
-
-// Rota para enviar o Orçamento para o status CarReady
-router.patch('/completed/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.CarReady);
-});
-
-// Rota para enviar o Orçamento para o status CarReady
-router.patch('/finish/:os', (req, res) => {
-  updateStatus(res, req.params.os, BudgetStatusEnum.Finished);
-});
-
 // Rota para buscar um Orçamento pela OS
 router.get('/:os', (req, res) => {
   const osParam = req.params.os;
@@ -183,13 +142,14 @@ router.get<{}, {}, {}, { license: string }>('/', (req, res) => {
       throw Error('Automóvel de um orçamento não encontrado!');
     }
 
-    const { os, garageId, status, license } = budget;
+    const { os, garageId, status, license, createdDate } = budget;
     const { brand, model, year } = car;
     const { name: clientName = '' } = clients.find((c) => c.id === budget.clientId) || {};
 
     return {
       os,
       garageId,
+      createdDate,
       status,
       license,
       clientName,
@@ -218,6 +178,47 @@ router.put<{ os: string }, {}, Omit<TBudget, 'garageId'>>('/:os', (req, res) => 
 
   fs.writeFileSync('data/budget.json', JSON.stringify(budgets, null, 2));
   res.json(updatedBudget);
+});
+
+const updateStatus = (res: any, os: string, status: BudgetStatusEnum) => {
+  const budgetIndex = budgets.findIndex((b) => b.os === os);
+
+  if (budgetIndex < 0) return res.status(400).json({ message: 'Orçamento não encontrado.' });
+
+  budgets[budgetIndex].status = status;
+
+  fs.writeFileSync('data/budget.json', JSON.stringify(budgets, null, 2));
+  res.status(201).json(true);
+};
+
+// Rota para enviar o Orçamento para o status ApprovedBudget
+router.patch('/approve/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.ApprovedBudget);
+});
+
+// Rota para enviar o Orçamento para o status WaitingBudgetApproval
+router.patch('/send-for-approve/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.WaitingBudgetApproval);
+});
+
+// Rota para enviar o Orçamento para o status RunningService
+router.patch('/start/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.RunningService);
+});
+
+// Rota para enviar o Orçamento devolta para o status WaitingBudget
+router.patch('/remake/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.WaitingBudget);
+});
+
+// Rota para enviar o Orçamento para o status CarReady
+router.patch('/completed/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.CarReady);
+});
+
+// Rota para enviar o Orçamento para o status CarReady
+router.patch('/finish/:os', (req, res) => {
+  updateStatus(res, req.params.os, BudgetStatusEnum.Finished);
 });
 
 // Rota que retorna a url para o whatsapp

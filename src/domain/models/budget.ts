@@ -39,6 +39,7 @@ export type TUpdatedBudget = Omit<TBudget, 'garageId'>;
 export type TBudgetResponse = {
   os: string;
   garageId: string;
+  createdDate: string;
   status: BudgetStatusEnum;
   license: string;
   clientName: string;
