@@ -30,6 +30,7 @@ router.get('', (req, res) => {
     acc.push({
       os: b.os,
       status: b.status,
+      observation: b.observation,
       clientName,
       license,
       brand,
