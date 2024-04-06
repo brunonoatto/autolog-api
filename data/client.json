@@ -20,8 +20,8 @@
     "name": "Cliente sem cadastro",
     "cpf": "689.617.100-60",
     "phone": "51989899898",
-    "email": "",
-    "password": ""
+    "email": "cliente@cliente.com",
+    "password": "123"
   },
   {
     "id": "d512127e-5d1e-497f-a658-6baf0724da3c",
@@ -38,5 +38,13 @@
     "phone": "51993151489",
     "email": "",
     "password": ""
+  },
+  {
+    "id": "6dcda603-109e-448a-94a3-a8fdaa65bc07",
+    "name": "primeiro cadastro",
+    "cpf": "02020202020",
+    "phone": "51999999999",
+    "email": "newclient@client.com",
+    "password": "senha123"
   }
 ]

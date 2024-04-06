@@ -29,7 +29,7 @@
   },
   {
     "id": "1aa56560-7a05-40b7-8264-16563e1411d4",
-    "os": "344950f1-c56f-4a85-bd68-2be683eb6ae1",
+    "os": "344950f1-c56f-4a85-bd68-2be683eb6ae11",
     "price": 23,
     "qtd": 1,
     "description": "item 1"
@@ -40,5 +40,26 @@
     "description": "MÃO DE OBRA",
     "qtd": 1,
     "price": 2
+  },
+  {
+    "id": "962fd5a7-4195-4be4-ba86-5b2f82213f31",
+    "os": "31a5a03e-5b9e-485c-81d2-a4e9bdef4b0c",
+    "description": "MÃO DE OBRA",
+    "qtd": 1,
+    "price": 500
+  },
+  {
+    "id": "363221c8-ba9b-4917-ab9a-3972b5d4e1cb",
+    "os": "31a5a03e-5b9e-485c-81d2-a4e9bdef4b0c",
+    "description": "item 1",
+    "qtd": 1,
+    "price": 25
+  },
+  {
+    "id": "145c757e-c52b-4e38-bcb0-8f78300915f8",
+    "os": "31a5a03e-5b9e-485c-81d2-a4e9bdef4b0c",
+    "description": "item 2",
+    "qtd": 4,
+    "price": 50
   }
 ]

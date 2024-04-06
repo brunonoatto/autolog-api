@@ -20,5 +20,18 @@
     "number": 456,
     "complement": null,
     "password": "senha456"
+  },
+  {
+    "password": "senha123",
+    "complement": "",
+    "number": 123,
+    "address": "rua lalal",
+    "email": "newgarage@garage.com",
+    "phone": "51998585858",
+    "cnpj_cpf": "231651231651",
+    "name": "primeira garagem",
+    "cnpj": "",
+    "cpf_cnpj": "",
+    "id": "54d77a26-d07a-4010-b0b3-9f5ad8139bbf"
   }
 ]

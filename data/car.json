@@ -33,5 +33,12 @@
     "brand": "Agrale",
     "model": "MARRUÁ AM 100 2.8  CS TDI Diesel",
     "year": 33333
+  },
+  {
+    "clientId": "6dcda603-109e-448a-94a3-a8fdaa65bc07",
+    "license": "AAAA1111",
+    "brand": "Mercedes-Benz",
+    "model": "500-E 5.0",
+    "year": 2015
   }
 ]
