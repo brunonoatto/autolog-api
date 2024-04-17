@@ -116,18 +116,10 @@ router.get<{}, {}, {}, { license: string }>('/', (req, res) => {
   const garageId = accessTokenData?.type === 'garage' ? accessTokenData?.id : null;
   const clientId = accessTokenData?.type === 'client' ? accessTokenData?.id : null;
 
-  const licensesFilter: string[] = [];
-  if (clientId) {
-    const clientCars = cars.filter((c) => c.clientId === clientId);
-    if (!clientCars.length) return res.status(400).json({ message: 'Cliente não encontrado.' });
-
-    licensesFilter.push(...clientCars.map((c) => c.license));
-  }
-
   const budgetsList: TBudget[] = budgets.filter(
     (b) =>
       (!req.query.license || b.license === req.query.license) &&
-      (!licensesFilter.length || licensesFilter.includes(b.license)) &&
+      (!clientId || b.clientId === clientId) &&
       (!garageId || b.garageId === garageId),
   );
   if (!budgetsList.length) return res.status(400).json({ message: 'Nenhum orçamento encontrado.' });
