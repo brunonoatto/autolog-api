@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import type { TAccessToken } from '../domain/models/login';
 
-export default function getAccessTokenData(req: Request<any>): TAccessToken | null {
+export default function getAccessTokenData(req: Request<any, any, any, any>): TAccessToken | null {
   const authHeader: string | undefined = req.headers['authorization'];
 
   if (!authHeader) return null;
