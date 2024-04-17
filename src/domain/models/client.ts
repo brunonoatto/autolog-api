@@ -1,3 +1,5 @@
+import type { TCar } from './car';
+
 export type TClient = {
   id: string;
   name: string;
@@ -7,11 +9,14 @@ export type TClient = {
   password: string;
 };
 
-export type TClientResponse = Omit<TClient, 'id' | 'password'>;
+export type TClientResponse = Omit<TClient, 'id' | 'password'> & {
+  cars?: Omit<TCar, 'clientId'>[];
+};
 
 export type TNewClient = Omit<TClient, 'id'>;
 
 export type TGetClientParams = {
   cpf: string;
   email: string;
+  withCars: boolean;
 };

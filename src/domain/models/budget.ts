@@ -1,5 +1,4 @@
 import { TCar } from './car';
-import { TClientResponse } from './client';
 
 export enum BudgetStatusEnum {
   'WaitingBudget' = 1,

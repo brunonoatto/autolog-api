@@ -48,5 +48,37 @@
     "clientId": "6dcda603-109e-448a-94a3-a8fdaa65bc07",
     "license": "AAAA1111",
     "createdDate": "2024-04-06T00:08:43.488Z"
+  },
+  {
+    "garageId": "54d77a26-d07a-4010-b0b3-9f5ad8139bbf",
+    "os": "1e8b8114-33b4-4150-9d10-5e10f5b300dd",
+    "status": 1,
+    "clientId": "8f9716f4-e3a7-42cb-99A2-c2c0caba087a",
+    "license": "AAA1122",
+    "createdDate": "2024-04-08T22:22:34.028Z"
+  },
+  {
+    "garageId": "54d77a26-d07a-4010-b0b3-9f5ad8139bbf",
+    "os": "d64fef7c-920f-4110-a074-239c16d75aad",
+    "status": 1,
+    "clientId": "8f9716f4-e3a7-42cb-99A2-c2c0caba087a",
+    "license": "RTE5895",
+    "createdDate": "2024-04-08T22:24:21.292Z"
+  },
+  {
+    "garageId": "54d77a26-d07a-4010-b0b3-9f5ad8139bbf",
+    "os": "0ac3d222-3359-4740-9bcd-d89100edbd9a",
+    "status": 1,
+    "clientId": "8f9716f4-e3a7-42cb-99A2-c2c0caba087a",
+    "license": "RRR1112",
+    "createdDate": "2024-04-08T22:33:12.113Z"
+  },
+  {
+    "garageId": "54d77a26-d07a-4010-b0b3-9f5ad8139bbf",
+    "os": "809048bd-d5d7-4217-a0a4-f8048aa2ec5e",
+    "status": 1,
+    "clientId": "8f9716f4-e3a7-42cb-99A2-c2c0caba087a",
+    "license": "RTE5891",
+    "createdDate": "2024-04-08T22:40:51.583Z"
   }
 ]
