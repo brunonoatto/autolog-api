@@ -3,9 +3,10 @@ import { Router } from 'express';
 import fs from 'fs';
 
 import { Repository } from '../repository';
-import { TClient, TGetClientParams, TNewClient } from '../domain/models/client';
+import { TClient, TClientResponse, TGetClientParams, TNewClient } from '../domain/models/client';
+import { TCar } from '../domain/models/car';
 
-const { clients } = Repository;
+const { clients, cars } = Repository;
 
 const router: Router = Router();
 
@@ -32,7 +33,7 @@ router.post<{}, {}, TNewClient>('/', (req, res) => {
 
 // Rota para buscar dados do cliente por cpf uo e-mail
 router.get<{}, {}, {}, TGetClientParams>('/', (req, res) => {
-  const { cpf, email } = req.query;
+  const { cpf, email, withCars } = req.query;
 
   const client: TClient | undefined = clients.find(
     (b) => (!cpf || b.cpf === cpf) && (!email || b.email === email),
@@ -40,9 +41,19 @@ router.get<{}, {}, {}, TGetClientParams>('/', (req, res) => {
 
   if (!client) return res.status(400).json({ message: 'Cliente não encontrado.' });
 
+  let clientCars: TCar[] | undefined = undefined;
+  if (withCars) {
+    clientCars = cars.filter((c) => c.clientId === client.id);
+  }
+
   const { id, password, ...clientData } = client;
 
-  res.status(200).json(clientData);
+  const response: TClientResponse = {
+    ...clientData,
+    cars: clientCars?.map(({ clientId, ...carProps }) => ({ ...carProps })),
+  };
+
+  res.status(200).json(response);
 });
 
 export default router;
