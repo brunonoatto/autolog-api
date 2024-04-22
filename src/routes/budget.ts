@@ -239,8 +239,9 @@ router.get('/whats/:os', (req, res) => {
     : `http://127.0.0.1:5173/orcamento/${os}`;
 
   const msg = `Olá ${client.name}, aqui é da mecênica ${garage.name}.\n\nSeu orçamento está pronto, basta clicar no link abaixo para revisar e aprovar.\nIniciaremos o serviço mediante aprovação do orçamento.\n\nLink: ${link}`;
-
-  const whatsAppLink = `https://wa.me/55${client.phone}?text=${encodeURI(msg)}`;
+  const whatsAppLink = `https://web.whatsapp.com/send/?phone=55${client.phone}&text=${encodeURI(
+    msg,
+  )}&type=phone_number&app_absent=0`;
 
   res.json({ link: whatsAppLink });
 });
